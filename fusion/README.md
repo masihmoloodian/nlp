@@ -6,7 +6,8 @@ Each method has its strengths:
 
 - Keyword-based search excels at precise term matching.
 - Vector-based search captures meaning and context.
-  Instead of choosing one, Fusion merges their outputs, creating a balanced, unified ranking that combines precision and semantic understanding.
+
+Instead of choosing one, Fusion merges their outputs, creating a balanced, unified ranking that combines precision and semantic understanding.
 
 # 💡 How Does It Work?
 
@@ -20,7 +21,7 @@ Vector Similarity:
 {'doc2': 0.8, 'doc4': 0.7, 'doc1': 0.6}
 ```
 
-- Score Normalization: Scores from different methods (often in varying scales) are normalized to bring them into a common range.
+- **_Score Normalization:_** Scores from different methods (often in varying scales) are normalized to bring them into a common range.
 
 ```plaintext
 normalized_score = (score - min_score) / (max_score - min_score)
@@ -36,7 +37,7 @@ Vector Similarity:
 {'doc2': 1.0, 'doc4': 0.875, 'doc1': 0.75}
 ```
 
-- Score Combination: Using techniques like Reciprocal Rank Fusion (RRF), scores are aggregated to produce a final ranking. RRF ensures diverse results while prioritizing relevance.
+- **_Score Combination:_** Using techniques like simple score averaging, scores from multiple search methods are aggregated to produce a final ranking. This method calculates the average of normalized scores from each method, ensuring a balanced contribution from all sources.
 
 ```plaintext
 final_score(doc) = (score1(doc) + score2(doc)) / number_of_methods
@@ -50,7 +51,7 @@ doc4: (0.0 + 0.875) / 2 = 0.4375
 
 ```
 
-- Reordering: Documents are ranked based on combined scores, ensuring the best of both worlds.
+- **_Reordering:_** Documents are ranked based on combined scores, ensuring the best of both worlds.
 
 ```plaintext
 ['doc1', 'doc2', 'doc4', 'doc3']
